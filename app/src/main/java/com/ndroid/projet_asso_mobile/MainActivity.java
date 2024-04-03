@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText mailEditText;
     private EditText passwordEditText;
     private Button connectBtn;
-    private TextView createAccountBtn;
     private String mail;
     private String password;
 
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         mailEditText = findViewById(R.id.MailEditText);
         passwordEditText = findViewById(R.id.PasswordEditText);
         connectBtn = findViewById(R.id.connectBtn);
-        createAccountBtn = findViewById(R.id.createAccountBtn);
 
         databaseManager = new DatabaseManager(getApplicationContext());
 
@@ -66,14 +64,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        createAccountBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent createAccountAActivity = new Intent(getApplicationContext(), CreateAccountActivity.class);
-                startActivity(createAccountAActivity);
-                finish();
-            }
-        });
     }
     public void onApiResponse(JSONObject response){
         Boolean success = null;

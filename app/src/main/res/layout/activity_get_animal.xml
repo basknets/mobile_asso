@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/nomLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom de l'animal :"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/nomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nomLabel"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/especeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nomTextView"
+        android:text="Espèce de l'animal :"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/especeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/especeLabel"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/descriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/especeLabel"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="8dp"
+        android:text="Description de l'animal :"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionLabel"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnModification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apporter des modifcations"
+        android:layout_below="@+id/descriptionTextView"
+        />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnModification"
+        android:layout_marginTop="20dp"
+        android:text="Supprimer l'animal" />
+
+
+
+
+
+
+</RelativeLayout>

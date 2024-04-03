@@ -15,6 +15,24 @@
         android:theme="@style/Theme.Projet_asso_mobile"
         tools:targetApi="31">
         <activity
+            android:name=".get_animal"
+            android:exported="false" />
+        <activity
+            android:name=".modification_animal"
+            android:exported="false" />
+        <activity
+            android:name=".delete_animal"
+            android:exported="false" />
+        <activity
+            android:name=".get_animaux"
+            android:exported="false" />
+        <activity
+            android:name=".les_animaux"
+            android:exported="false" />
+        <activity
+            android:name=".ajout_animaux"
+            android:exported="false" />
+        <activity
             android:name=".InterfaceActivity"
             android:exported="false" />
         <activity
