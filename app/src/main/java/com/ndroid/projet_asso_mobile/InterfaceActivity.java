@@ -32,16 +32,14 @@ public class InterfaceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent les_animaux = new Intent(getApplicationContext(), les_animaux.class);
                 startActivity(les_animaux);
-                finish();
             }
         });
 
         btnAjout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ajout_animaux = new Intent(getApplicationContext(), ajout_animaux.class);
-                startActivity(ajout_animaux);
-                finish();
+                Intent AjoutAnimaux = new Intent(getApplicationContext(), AjoutAnimaux.class);
+                startActivity(AjoutAnimaux);
             }
         });
     }

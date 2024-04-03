@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateAccountActivity"
+    tools:context=".ajout_animaux"
     android:background="@color/primary">
 
     <androidx.cardview.widget.CardView
@@ -39,10 +39,8 @@
             android:textSize="35sp"
             />
 
-
-
         <TextView
-            android:id="@+id/errorCreateAccountTextView"
+            android:id="@+id/errorCreateAnimalTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -54,47 +52,79 @@
             android:visibility="gone"/>
 
         <EditText
-            android:id="@+id/createFirstnameEditText"
+            android:id="@+id/createNomEditText"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="35dp"
-            android:background="@color/primary"
-            android:hint="Prénom"
-            android:padding="10dp"/>
-        <EditText
-            android:id="@+id/createLastnameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="25dp"
             android:background="@color/primary"
             android:hint="Nom"
             android:padding="10dp"/>
         <EditText
-            android:id="@+id/createMailEditText"
+            android:id="@+id/createDateNaissanceEditText"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="25dp"
             android:background="@color/primary"
-            android:hint="Email"
+            android:hint="Date de naissance"
+            android:padding="10dp"/>
+        <EditText
+            android:id="@+id/createEspeceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/primary"
+            android:hint="Espece"
             android:padding="10dp"/>
 
         <EditText
-            android:id="@+id/createPasswordEditText"
+            android:id="@+id/createRaceEditText"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="25dp"
             android:background="@color/primary"
-            android:hint="Mot de passe"
-            android:padding="10dp"
-            android:inputType="textPassword"/>
+            android:hint="Race"
+            android:padding="10dp"/>
+        <EditText
+            android:id="@+id/createSexeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/primary"
+            android:hint="Sexe"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/createLieuEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/primary"
+            android:hint="Lieu"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/createDescriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/primary"
+            android:hint="Description"
+            android:padding="10dp"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,11 +132,11 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/createAccountBtn"
+                android:id="@+id/createAnimalBtn"
                 android:layout_width="150dp"
                 android:layout_height="60dp"
                 android:backgroundTint="@color/black"
-                android:text="creer un compte"
+                android:text="Ajouter un animal"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 />
