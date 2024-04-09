@@ -1,16 +1,15 @@
 package com.ndroid.projet_asso_mobile;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -26,7 +25,9 @@ public class ModificationAnimal extends AppCompatActivity {
     private EditText nomEditText;
     private EditText especeEditText;
     private EditText descriptionEditText;
+    private Button buttonModifier;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,46 +46,60 @@ public class ModificationAnimal extends AppCompatActivity {
             nomEditText = findViewById(R.id.nomEditText);
             especeEditText = findViewById(R.id.especeEditText);
             descriptionEditText = findViewById(R.id.descriptionEditText);
+            buttonModifier = findViewById(R.id.buttonModifier);
 
             // Pré-remplir les champs du formulaire avec les données de l'animal
             nomEditText.setText(nom);
             especeEditText.setText(espece);
             descriptionEditText.setText(description);
+
+            // Afficher l'ID de l'animal dans la TextView idTextView
+            TextView idTextView = findViewById(R.id.idTextView);
+            idTextView.setText(String.valueOf(animalId));
+
+            buttonModifier.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String nom = nomEditText.getText().toString();
+                    String espece = especeEditText.getText().toString();
+                    String description = descriptionEditText.getText().toString();
+
+                    modifAnimal(nom, espece, description);
+                }
+            });
         }
     }
 
-    public void modifierAnimal(View view) {
-        String url = "http://172.20.10.13:8080/animaux/modification.php"; // L'URL de modification doit être utilisée ici
+    public void onApiResponse(JSONObject response){
 
-        // Récupérer les valeurs des champs modifiés
-        String nom = nomEditText.getText().toString();
-        String espece = especeEditText.getText().toString();
-        String description = descriptionEditText.getText().toString();
+        boolean success = response.optBoolean("success", false); // Defaults to false if "success" is not a boolean.
+        if (success) {
+            Intent interfaceActivityIntent = new Intent(getApplicationContext(), InterfaceActivity.class);
+            startActivity(interfaceActivityIntent);
+        } else {
+            String error = response.optString("error", "Unknown error"); // Provide a default error message.
 
-        // Appeler la méthode pour modifier l'animal
-        modifierAnimal(url, animalId, nom, espece, description);
+        }
     }
 
-    private void modifierAnimal(String url, int animalId, String nom, String espece, String description) {
+    public void modifAnimal(String nom, String espece, String description) {
+        String url = "http://172.20.10.13:8080/animaux/modification.php";
+
         Map<String, String> params = new HashMap<>();
-        params.put("animal_id", String.valueOf(animalId)); // Envoyer l'ID de l'animal à modifier
+        params.put("animal_id", String.valueOf(animalId));
         params.put("nom", nom);
         params.put("espece", espece);
         params.put("description", description);
-
         JSONObject parameters = new JSONObject(params);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, parameters,
                 response -> {
-                    // Gérer la réponse de la requête
-                    Toast.makeText(ModificationAnimal.this, "Animal modifié avec succès", Toast.LENGTH_SHORT).show();
-                    // Vous pouvez rediriger ou faire d'autres actions après la modification réussie
+                    onApiResponse(response);
+                    Toast.makeText(ModificationAnimal.this, response.toString(), Toast.LENGTH_LONG).show();
                 },
                 error -> {
-                    // Gérer l'erreur de la requête
-                    Toast.makeText(ModificationAnimal.this, "Erreur lors de la modification de l'animal", Toast.LENGTH_SHORT).show();
-                }
-        );
+                    Toast.makeText(ModificationAnimal.this, "Erreur lors de la modification : " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                });
 
         // Ajouter la requête à la file d'attente de Volley
         Volley.newRequestQueue(this).add(jsonObjectRequest);

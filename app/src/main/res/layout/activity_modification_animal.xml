@@ -76,6 +76,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="ID de l'animal:"
+        android:layout_below="@id/descriptionEditText"
+
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -84,9 +86,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/idLabel"
     />
+    <TextView
+        android:id="@+id/errorModifAnimalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/red"
+        android:text="error"
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"/>
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/buttonModifier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enregistrer"

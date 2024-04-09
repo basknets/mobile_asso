@@ -17,6 +17,7 @@
         <activity
             android:name=".ModificationAnimal"
             android:exported="false" />
+
         <activity
             android:name=".AjoutAnimaux"
             android:exported="false" />
