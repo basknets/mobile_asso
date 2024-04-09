@@ -64,18 +64,26 @@ public class get_animal extends AppCompatActivity {
         });
 
         btnModification = findViewById(R.id.btnModification);
+        TextView nomTextView = findViewById(R.id.nomTextView);
+        TextView especeTextView = findViewById(R.id.especeTextView);
+        TextView descriptionTextView = findViewById(R.id.descriptionTextView);
         btnModification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent modification_animal = new Intent(getApplicationContext(), modification_animal.class);
-                startActivity(modification_animal);
+                Intent modificationAnimalIntent = new Intent(getApplicationContext(), ModificationAnimal.class);
+                // Ajouter les données de l'animal à l'intent
+                modificationAnimalIntent.putExtra("animal_id", animalId);
+                modificationAnimalIntent.putExtra("nom", nomTextView.getText().toString());
+                modificationAnimalIntent.putExtra("espece", especeTextView.getText().toString());
+                modificationAnimalIntent.putExtra("description", descriptionTextView.getText().toString());
+                startActivity(modificationAnimalIntent);
             }
         });
+
     }
 
     // Méthode pour supprimer l'animal de l'API
     private void deleteAnimalFromApi(int animalId) {
-        // Créer un objet JSON avec l'identifiant de l'animal
         JSONObject jsonBody = new JSONObject();
         try {
             jsonBody.put("animal_id", animalId);
@@ -83,17 +91,13 @@ public class get_animal extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // Créer une file de requêtes pour envoyer la requête HTTP
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        // Créer une requête POST à l'URL de votre API
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://172.20.10.13:8080/animaux/delete.php", jsonBody,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        // Gérer la réponse de l'API si nécessaire
                         Toast.makeText(get_animal.this, "Animal supprimé avec succès", Toast.LENGTH_SHORT).show();
-                        // Rediriger vers une autre activité ou terminer celle-ci si nécessaire
                         Intent les_animaux = new Intent(getApplicationContext(), les_animaux.class);
                         startActivity(les_animaux);
                     }

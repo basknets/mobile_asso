@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Projet_asso_mobile"
         tools:targetApi="31">
         <activity
+            android:name=".ModificationAnimal"
+            android:exported="false" />
+        <activity
             android:name=".AjoutAnimaux"
             android:exported="false" />
         <activity

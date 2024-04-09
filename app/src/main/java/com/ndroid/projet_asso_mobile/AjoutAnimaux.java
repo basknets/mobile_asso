@@ -1,6 +1,7 @@
 package com.ndroid.projet_asso_mobile;
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,10 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AjoutAnimaux extends AppCompatActivity {
@@ -90,6 +94,17 @@ public class AjoutAnimaux extends AppCompatActivity {
     }
 
     public void createAnimal(String nom, String date_naissance, String espece, String race, String sexe, String lieu, String description) {
+        // Vérifier si la date est au bon format
+        if (!isValidDateFormat(date_naissance)) {
+            // Si la date n'est pas au bon format, essayer de la convertir
+            date_naissance = convertDateFormat(date_naissance);
+            // Si la conversion échoue, afficher un message d'erreur et quitter la méthode
+            if (date_naissance == null) {
+                Toast.makeText(this, "La date doit être au format MM-dd-yyyy ou yyyy-MM-dd", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
         String url = "http://172.20.10.13:8080/animaux/ajout.php";
 
         Map<String, String> params = new HashMap<>();
@@ -112,9 +127,26 @@ public class AjoutAnimaux extends AppCompatActivity {
                 }
         );
 
-        // Ajouter la requête à la file d'attente de Volley
         Volley.newRequestQueue(this).add(jsonObjectRequest);
     }
+
+    private boolean isValidDateFormat(String date) {
+        String regex = "\\d{4}-\\d{2}-\\d{2}";
+        return date.matches(regex);
+    }
+
+    private String convertDateFormat(String date) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        try {
+            Date parsedDate = inputFormat.parse(date);
+            return outputFormat.format(parsedDate);
+        } catch (ParseException e) {
+            // Si la conversion échoue, retourner null
+            return null;
+        }
+    }
+
 
 
 }
