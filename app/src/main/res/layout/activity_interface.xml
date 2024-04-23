@@ -55,17 +55,27 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/black"
-                android:text="Les animaux" />
+                android:text="Les animaux adopté" />
 
             <Button
-                android:id="@+id/btnAjout"
+                android:id="@+id/btnAnimauxAdopte"
                 android:layout_width="150dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/black"
-                android:text="ajouter un animal" />
+                android:text="Animaux à adopter" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAjout"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/black"
+            android:text="ajouter un animal" />
+
     </LinearLayout>
 
 

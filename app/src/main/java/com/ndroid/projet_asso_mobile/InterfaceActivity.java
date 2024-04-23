@@ -18,6 +18,8 @@ public class InterfaceActivity extends AppCompatActivity {
     private Button btnAnimaux;
     private Button btnAjout;
 
+    private  Button btnAnimauxAdopte;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +28,21 @@ public class InterfaceActivity extends AppCompatActivity {
 
         btnAnimaux = findViewById(R.id.btnAnimaux);
         btnAjout = findViewById(R.id.btnAjout);
+        btnAnimauxAdopte = findViewById(R.id.btnAnimauxAdopte);
 
         btnAnimaux.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent les_animaux = new Intent(getApplicationContext(), les_animaux.class);
                 startActivity(les_animaux);
+            }
+        });
+
+        btnAnimauxAdopte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent AnimauxAdoption = new Intent(getApplicationContext(), AnimauxAdoption.class);
+                startActivity(AnimauxAdoption);
             }
         });
 

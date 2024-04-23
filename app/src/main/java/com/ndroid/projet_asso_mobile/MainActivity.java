@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void connectUser(String mail, String password) {
-        String url = "http://172.20.10.13:8080/user/login.php";
+        String url = "http://192.168.43.137:8080/user/login.php";
 
         Map<String, String> params = new HashMap<>();
         params.put("mail", mail);

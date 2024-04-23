@@ -83,7 +83,7 @@ public class ModificationAnimal extends AppCompatActivity {
     }
 
     public void modifAnimal(String nom, String espece, String description) {
-        String url = "http://172.20.10.13:8080/animaux/modification.php";
+        String url = "http://192.168.43.137:8080/animaux/modification.php";
 
         Map<String, String> params = new HashMap<>();
         params.put("animal_id", String.valueOf(animalId));

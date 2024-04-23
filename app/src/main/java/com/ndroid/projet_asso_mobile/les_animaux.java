@@ -51,7 +51,7 @@ public class les_animaux extends AppCompatActivity {
 
         protected Void doInBackground(Void... voids) {
             try {
-                URL url = new URL("http://172.20.10.13:8080/animaux/get.php");
+                URL url = new URL("http://192.168.43.137:8080/animaux/get.php");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = connection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

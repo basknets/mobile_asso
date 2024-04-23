@@ -93,7 +93,7 @@ public class get_animal extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://172.20.10.13:8080/animaux/delete.php", jsonBody,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://192.168.43.137:8080/animaux/delete.php", jsonBody,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
